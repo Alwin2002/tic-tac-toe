@@ -3,7 +3,6 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.InetAddress;
-import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import javafx.application.Application;
@@ -21,6 +20,10 @@ public class client extends Application{
     Text text2=new Text();
     public int arr[] = new int[9];
     int o[]= new int[9];
+    winner w = new winner();
+    int x[]= new int[9];
+    Text text3 = new Text();
+
     public static void main(String[] args)  {
         
         launch(args);
@@ -39,6 +42,7 @@ public class client extends Application{
         String c = "O";
         VBox vbox = new VBox();
         Text text1= new Text("Match 2");
+        Text text3 = new Text();
         Button button[]= new Button[9];
         
         
@@ -51,6 +55,7 @@ public class client extends Application{
             {
                 button[count]=new Button();
                 button[count].setPrefSize(50, 50);
+                button[count].setStyle("-fx-font-size: 22px;");
                 gridPane.add(button[count],i,j);
                 count++;
             }
@@ -64,7 +69,7 @@ public class client extends Application{
 
         gridPane.setPrefSize(150, 150);
 
-        vbox.getChildren().addAll(text1,text2,gridPane); 
+        vbox.getChildren().addAll(text1,text2,gridPane,text3); 
 
         vbox.setAlignment(Pos.CENTER);
         vbox.setSpacing(15);
@@ -81,6 +86,13 @@ public class client extends Application{
             dis(button);
             arr[0]=1;
             o[0]=1;
+            int[] b = w.check(o);
+            if (b != null) {
+                text3.setText("O wins");
+                button[b[0]].setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-size: 22px;");
+                button[b[1]].setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-size: 22px;");
+                button[b[2]].setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-size: 22px;");
+            }
             try {
                 dout.writeInt(0);
             } catch (IOException e1) {
@@ -95,6 +107,13 @@ public class client extends Application{
             dis(button);
             arr[1]=1;
             o[1]=1;
+            int[] b = w.check(o);
+            if (b != null) {
+                text3.setText("O wins");
+                button[b[0]].setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-size: 22px;");
+                button[b[1]].setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-size: 22px;");
+                button[b[2]].setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-size: 22px;");
+            }
             try {
                 dout.writeInt(1);
             } catch (IOException e2) {
@@ -109,6 +128,13 @@ public class client extends Application{
             arr[2]=1;
             dis(button);
             o[2]=1;
+            int[] b = w.check(o);
+            if (b != null) {
+                text3.setText("O wins");
+                button[b[0]].setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-size: 22px;");
+                button[b[1]].setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-size: 22px;");
+                button[b[2]].setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-size: 22px;");
+            }
             try {
                 dout.writeInt(2);
             } catch (IOException e1) {
@@ -123,6 +149,13 @@ public class client extends Application{
             arr[3]=1;
             dis(button);
             o[3]=1;
+            int[] b = w.check(o);
+            if (b != null) {
+                text3.setText("O wins");
+                button[b[0]].setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-size: 22px;");
+                button[b[1]].setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-size: 22px;");
+                button[b[2]].setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-size: 22px;");
+            }
             try {
                 dout.writeInt(3);
             } catch (IOException e1) {
@@ -137,6 +170,13 @@ public class client extends Application{
             arr[4]=1;
             dis(button);
             o[4]=1;
+            int[] b = w.check(o);
+            if (b != null) {
+                text3.setText("O wins");
+                button[b[0]].setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-size: 22px;");
+                button[b[1]].setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-size: 22px;");
+                button[b[2]].setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-size: 22px;");
+            }
             try {
                 dout.writeInt(4);
             } catch (IOException e1) {
@@ -150,6 +190,13 @@ public class client extends Application{
             arr[5]=1;
             dis(button);
             o[5]=1;
+            int[] b = w.check(o);
+            if (b != null) {
+                text3.setText("O wins");
+                button[b[0]].setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-size: 22px;");
+                button[b[1]].setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-size: 22px;");
+                button[b[2]].setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-size: 22px;");
+            }
             try {
                 dout.writeInt(5);
             } catch (IOException e1) {
@@ -163,6 +210,13 @@ public class client extends Application{
             arr[6]=1;
             o[6]=1;
             dis(button);
+            int[] b = w.check(o);
+            if (b != null) {
+                text3.setText("O wins");
+                button[b[0]].setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-size: 22px;");
+                button[b[1]].setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-size: 22px;");
+                button[b[2]].setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-size: 22px;");
+            }
             try {
                 dout.writeInt(6);
             } catch (IOException e1) {
@@ -176,6 +230,13 @@ public class client extends Application{
             arr[7]=1;
             dis(button);
             o[7]=1;
+            int[] b = w.check(o);
+            if (b != null) {
+                text3.setText("O wins");
+                button[b[0]].setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-size: 22px;");
+                button[b[1]].setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-size: 22px;");
+                button[b[2]].setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-size: 22px;");
+            }
             try {
                 dout.writeInt(7);
             } catch (IOException e1) {
@@ -189,6 +250,13 @@ public class client extends Application{
             arr[8]=1;
             dis(button);
             o[8]=1;
+            int[] b = w.check(o);
+            if (b != null) {
+                text3.setText("O wins");
+                button[b[0]].setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-size: 22px;");
+                button[b[1]].setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-size: 22px;");
+                button[b[2]].setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-size: 22px;");
+            }
             try {
                 dout.writeInt(8);
             } catch (IOException e1) {
@@ -233,6 +301,15 @@ public class client extends Application{
                         text2.setText("O's turn");
                         button[str].setText("X");
                         arr[str]=1;
+                        x[str]=1;
+                        int b[] = w.check(x);
+                        if(b!=null){
+                                text3.setText("X wins");
+                                button[b[0]].setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-size: 22px;");
+                                button[b[1]].setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-size: 22px;");
+                                button[b[2]].setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-size: 22px;");
+                            
+                        }
                         for(int i=0;i<9;i++){
                             if(arr[i]==0){
                                 button[i].setDisable(false);
