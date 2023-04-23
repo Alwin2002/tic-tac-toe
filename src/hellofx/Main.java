@@ -27,6 +27,8 @@ public class Main extends Application {
     winner w = new winner();
     int o[] = new int[9];
     Text text3 = new Text();
+    int match = 1;
+    Text text1 = new Text("Match 1");
 
     public static void main(String[] args) {
 
@@ -43,7 +45,7 @@ public class Main extends Application {
 
         String c = "X";
         VBox vbox = new VBox();
-        Text text1 = new Text("Match 2");
+
         Button button[] = new Button[9];
         GridPane gridPane = new GridPane();
         int count = 0;
@@ -58,198 +60,42 @@ public class Main extends Application {
             }
         }
 
-        button[0].setOnAction(e -> {
 
-            button[0].setText(c);
-            text2.setText("O's turn");
-            dis(button);
-            arr[0] = 1;
-            x[0] = 1;
-            int[] b = w.check(x);
-            if (b != null) {
-                text3.setText("X wins");
-                button[b[0]].setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-size: 22px;");
-                button[b[1]].setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-size: 22px;");
-                button[b[2]].setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-size: 22px;");
-            }
+        VBox vBox2 = new VBox();
+        Text text4 = new Text("No of matches");
 
+        String no[] = { "1", "3", "5", "7" };
+
+        ComboBox combo_box = new ComboBox(FXCollections.observableArrayList(no));
+
+        Button button10 = new Button("Submit");
+        button10.setOnAction(e -> {
+            String a = (String) combo_box.getValue();
+            int in = Integer.parseInt(a);
             try {
-                dout.writeInt(0);
+                dout.writeInt(in);
             } catch (IOException e1) {
                 e1.printStackTrace();
             }
-
+            primaryStage.setScene(scene1);
         });
-        button[1].setOnAction(e -> {
+        vBox2.getChildren().addAll(text4, combo_box, button10);
 
-            button[1].setText(c);
-            text2.setText("O's turn");
-            dis(button);
-            arr[1] = 1;
-            x[1] = 1;
-            int[] b = w.check(x);
-            if (b != null) {
-                text3.setText("X wins");
-                button[b[0]].setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-size: 22px;");
-                button[b[1]].setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-size: 22px;");
-                button[b[2]].setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-size: 22px;");
-            }
+        vBox2.setSpacing(15);
+        vBox2.setAlignment(Pos.CENTER);
 
-            try {
-                dout.writeInt(1);
-            } catch (IOException e1) {
-                e1.printStackTrace();
-            }
+        Scene scene2 = new Scene(vBox2, 300, 350);
 
-        });
-        button[2].setOnAction(e -> {
 
-            button[2].setText(c);
-            text2.setText("O's turn");
-            dis(button);
-            arr[2] = 1;
-            x[2] = 1;
-            int[] b = w.check(x);
-            if (b != null) {
-                text3.setText("X wins");   
-                button[b[0]].setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-size: 22px;");
-                button[b[1]].setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-size: 22px;");
-                button[b[2]].setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-size: 22px;");
-            }
-            try {
-                dout.writeInt(2);
-            } catch (IOException e1) {
-                e1.printStackTrace();
-            }
-
-        });
-        button[3].setOnAction(e -> {
-
-            button[3].setText(c);
-            text2.setText("O's turn");
-            dis(button);
-            arr[3] = 1;
-            x[3] = 1;
-            int[] b = w.check(x);
-            if (b != null) {
-                text3.setText("X wins");
-                button[b[0]].setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-size: 22px;");
-                button[b[1]].setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-size: 22px;");
-                button[b[2]].setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-size: 22px;");
-            }
-            try {
-                dout.writeInt(3);
-            } catch (IOException e1) {
-                e1.printStackTrace();
-            }
-
-        });
-        button[4].setOnAction(e -> {
-
-            button[4].setText(c);
-            text2.setText("O's turn");
-            dis(button);
-            arr[4] = 1;
-            x[4] = 1;
-            int[] b = w.check(x);
-            if (b != null) {
-                text3.setText("X wins");
-                button[b[0]].setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-size: 22px;");
-                button[b[1]].setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-size: 22px;");
-                button[b[2]].setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-size: 22px;");
-            }
-
-            try {
-                dout.writeInt(4);
-            } catch (IOException e1) {
-                e1.printStackTrace();
-            }
-
-        });
-        button[5].setOnAction(e -> {
-
-            button[5].setText(c);
-            text2.setText("O's turn");
-            dis(button);
-            arr[5] = 1;
-            x[5] = 1;
-            int[] b = w.check(x);
-            if (b != null) {
-                text3.setText("X wins");
-                button[b[0]].setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-size: 22px;");
-                button[b[1]].setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-size: 22px;");
-                button[b[2]].setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-size: 22px;");
-            }
-            try {
-                dout.writeInt(5);
-            } catch (IOException e1) {
-                e1.printStackTrace();
-            }
-
-        });
-        button[6].setOnAction(e -> {
-
-            button[6].setText(c);
-            text2.setText("O's turn");
-            dis(button);
-            arr[6] = 1;
-            x[6] = 1;
-            int[] b = w.check(x);
-            if (b != null) {
-                text3.setText("X wins");
-                button[b[0]].setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-size: 22px;");
-                button[b[1]].setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-size: 22px;");
-                button[b[2]].setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-size: 22px;");
-            }
-            try {
-                dout.writeInt(6);
-            } catch (IOException e1) {
-                e1.printStackTrace();
-            }
-
-        });
-        button[7].setOnAction(e -> {
-
-            button[7].setText(c);
-            text2.setText("O's turn");
-            dis(button);
-            arr[7] = 1;
-            x[7] = 1;
-            int[] b = w.check(x);
-            if (b != null) {
-                text3.setText("X wins");
-                button[b[0]].setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-size: 22px;");
-                button[b[1]].setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-size: 22px;");
-                button[b[2]].setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-size: 22px;");
-            }
-            try {
-                dout.writeInt(7);
-            } catch (IOException e1) {
-                e1.printStackTrace();
-            }
-
-        });
-        button[8].setOnAction(e -> {
-
-            button[8].setText(c);
-            text2.setText("O's turn");
-            dis(button);
-            arr[8] = 1;
-            x[0] = 1;
-            int[] b = w.check(x);
-            if (b != null) {
-                text3.setText("X wins");
-                button[b[0]].setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-size: 22px;");
-                button[b[1]].setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-size: 22px;");
-                button[b[2]].setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-size: 22px;");
-            }
-            try {
-                dout.writeInt(8);
-            } catch (IOException e1) {
-                e1.printStackTrace();
-            }
-
-        });
+        button[0].setOnAction(e -> extracted(0,dout, c, button));
+        button[1].setOnAction(e -> extracted(1,dout, c, button));
+        button[2].setOnAction(e -> extracted(2,dout, c, button));
+        button[3].setOnAction(e -> extracted(3,dout, c, button));
+        button[4].setOnAction(e -> extracted(4,dout, c, button));
+        button[5].setOnAction(e -> extracted(5,dout, c, button));
+        button[6].setOnAction(e -> extracted(6,dout, c, button));
+        button[7].setOnAction(e -> extracted(7,dout, c, button));
+        button[8].setOnAction(e -> extracted(8,dout, c, button));
 
         text2.setText("X's turn");
 
@@ -266,30 +112,6 @@ public class Main extends Application {
 
         scene1 = new Scene(vbox, 300, 350);
 
-        VBox vBox2 = new VBox();
-        Text text4 = new Text("No of matches");
-
-        String no[] = { "1", "3", "5", "7" };
-
-        ComboBox combo_box = new ComboBox(FXCollections.observableArrayList(no));
-
-        Button button10 = new Button("Submit");
-        button10.setOnAction(e -> {
-            String a = (String) combo_box.getValue();
-            try {
-                dout.writeInt(89);
-            } catch (IOException e1) {
-                e1.printStackTrace();
-            }
-            primaryStage.setScene(scene1);
-        });
-        vBox2.getChildren().addAll(text4, combo_box, button10);
-
-        vBox2.setSpacing(15);
-        vBox2.setAlignment(Pos.CENTER);
-
-        Scene scene2 = new Scene(vBox2, 300, 350);
-
         primaryStage.setScene(scene2);
         primaryStage.setTitle("TIC-TAC-TOE");
         primaryStage.show();
@@ -298,11 +120,51 @@ public class Main extends Application {
 
     }
 
+    public void extracted(int count,DataOutputStream dout, String c, Button[] button) {
+        button[count].setText(c);
+        text2.setText("O's turn");
+        dis(button);
+        arr[count] = 1;
+        x[count] = 1;
+        try {
+            dout.writeInt(count);
+        } catch (IOException e1) {
+            e1.printStackTrace();
+        }
+        int[] b = w.check(x);
+        if (b != null) {
+            text3.setText("X wins");
+            text2.setText("");
+            dis(button);
+            button[b[0]].setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-size: 22px;");
+            button[b[1]].setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-size: 22px;");
+            button[b[2]].setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-size: 22px;");
+
+
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            enl(button);
+            match++;
+            text1.setText("Match "+match);
+        }
+    }
+
     public void dis(Button[] b) {
         for (int i = 0; i < 9; i++) {
             b[i].setDisable(true);
         }
     }
+    public void enl(Button[] b) {
+        for (int i = 0; i < 9; i++) {
+            b[i].setDisable(false);
+            b[i].setText("");
+            b[i].setStyle("-fx-background-color: white;");
+        }
+    }
+
 
     private class ServerListener extends Thread {
 
@@ -329,12 +191,12 @@ public class Main extends Application {
                         o[str]=1;
                         int b[] = w.check(o);
                         if(b!=null){
-                            if (b != null) {
                                 text3.setText("O wins");
+                                text2.setText("");
+                                dis(button);
                                 button[b[0]].setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-size: 22px;");
                                 button[b[1]].setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-size: 22px;");
                                 button[b[2]].setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-size: 22px;");
-                            }
                         }
                         for (int i = 0; i < 9; i++) {
                             if (arr[i] == 0) {
