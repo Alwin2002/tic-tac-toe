@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
+
+import javafx.animation.PauseTransition;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.Scene;
@@ -14,6 +16,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import javafx.geometry.Pos;
 
 public class client extends Application{
@@ -24,6 +27,11 @@ public class client extends Application{
     winner w = new winner();
     int x[]= new int[9];
     Text text3 = new Text();
+    Text text1= new Text("Match 1");
+    int match=1;
+    PauseTransition delay = new PauseTransition(Duration.seconds(3));
+
+
 
     public static void main(String[] args)  {
         
@@ -42,7 +50,7 @@ public class client extends Application{
 
         String c = "O";
         VBox vbox = new VBox();
-        Text text1= new Text("Match 2");
+       
         Button button[]= new Button[9];
         
         
@@ -95,10 +103,16 @@ public class client extends Application{
 
 public void extracted(int count,DataOutputStream dout, String c, Button[] button) {
     button[count].setText(c);
+    button[count].setStyle("-fx-font-size: 22px;");
     text2.setText("X's turn");
     dis(button);
     arr[count]=1;
     o[count]=1;
+    try {
+        dout.writeInt(count);
+    } catch (IOException e1) {
+        
+    }
     int[] b = w.check(o);
     if (b != null) {
         text3.setText("O wins");
@@ -107,17 +121,30 @@ public void extracted(int count,DataOutputStream dout, String c, Button[] button
         button[b[0]].setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-size: 22px;");
         button[b[1]].setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-size: 22px;");
         button[b[2]].setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-size: 22px;");
-    }
-    try {
-        dout.writeInt(count);
-    } catch (IOException e1) {
-        
+                    delay.play();
+            delay.setOnFinished(event -> { 
+                enl(button);
+                match++;
+                text1.setText("Match " + match);
+                text3.setText("");
+                text2.setText("X's turn");
+            });
     }
 }
 
     public void dis(Button[] b){
         for(int i=0;i<9;i++){
             b[i].setDisable(true);
+        }
+    }
+    public void enl(Button[] b) {
+        for (int i = 0; i < 9; i++) {
+            b[i].setDisable(false);
+            b[i].setText("");
+            b[i].setStyle("");
+            arr[i]=0;
+            x[i]=0;
+            o[i]=0;
         }
     }
 
@@ -143,6 +170,7 @@ public void extracted(int count,DataOutputStream dout, String c, Button[] button
                     
                     Platform.runLater(() -> {
                         text2.setText("O's turn");
+                        button[str].setStyle("-fx-font-size: 22px;");
                         button[str].setText("X");
                         arr[str]=1;
                         x[str]=1;
@@ -154,7 +182,15 @@ public void extracted(int count,DataOutputStream dout, String c, Button[] button
                                 button[b[0]].setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-size: 22px;");
                                 button[b[1]].setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-size: 22px;");
                                 button[b[2]].setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-size: 22px;"); 
-                        }
+                                delay.play();
+                                delay.setOnFinished(event -> { 
+                                    enl(button);
+                                    match++;
+                                    text1.setText("Match " + match);
+                                    text3.setText("");
+                                    text2.setText("X's turn");
+                                });
+                            }
                         for(int i=0;i<9;i++){
                             if(arr[i]==0){
                                 button[i].setDisable(false);

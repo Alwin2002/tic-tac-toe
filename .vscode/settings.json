@@ -1,11 +1,9 @@
 {
     "java.project.sourcePaths": ["src"],
     "java.project.outputPath": "bin",
-    "java.project.referencedLibraries": {
-        "include": [
-            "lib/**/*.jar",
-            "/Users/alwinantu/Downloads/javafx-sdk-17.0.7/lib/**/*.jar"
-        ],
-        "exclude": []
-    }
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "/Users/alwinantu/Downloads/javafx-sdk-17.0.7/lib/**/*.jar",
+        "/Users/alwinantu/Downloads/mysql-connector.jar"
+    ]
 }
