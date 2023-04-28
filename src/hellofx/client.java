@@ -3,23 +3,23 @@ package hellofx;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
-import java.net.InetAddress;
+
 import java.net.Socket;
 import java.net.UnknownHostException;
 
 import javafx.animation.PauseTransition;
-import javafx.application.Application;
+
 import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
+
 import javafx.util.Duration;
 import javafx.geometry.Pos;
 
-public class client extends Application{
+public class client{
     private Scene scene1;
     Text text2=new Text();
     public int arr[] = new int[9];
@@ -31,22 +31,12 @@ public class client extends Application{
     int match=1;
     PauseTransition delay = new PauseTransition(Duration.seconds(3));
 
+   public Scene get(Socket socket) throws IOException {
 
 
-    public static void main(String[] args)  {
-        
-        launch(args);
-    }
-
-   @Override
-    public void start(Stage primaryStage)  throws IOException {
-
-
-        Socket s = new Socket(InetAddress.getLocalHost(), 3000);
+        Socket s = socket;
         DataInputStream dis=new DataInputStream(s.getInputStream());
         DataOutputStream dout=new DataOutputStream(s.getOutputStream());
-        
-        int a = dis.readInt();
 
         String c = "O";
         VBox vbox = new VBox();
@@ -83,9 +73,7 @@ public class client extends Application{
         vbox.setSpacing(15);
 
         scene1 = new Scene(vbox,300,350);
-        primaryStage.setScene(scene1);
-        primaryStage.setTitle("TIC-TAC-TOE");
-        primaryStage.show();
+
 
         button[0].setOnAction(e -> extracted(0,dout, c, button));
         button[1].setOnAction(e -> extracted(1,dout, c, button));
@@ -98,6 +86,8 @@ public class client extends Application{
         button[8].setOnAction(e -> extracted(8,dout, c, button));
 
         new ServerListener(dis,dout,button).start();
+
+        return scene1;
 
     }
 

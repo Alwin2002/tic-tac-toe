@@ -16,11 +16,10 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 import javafx.util.Duration;
 import javafx.geometry.Pos;
 
-public class Main extends Application {
+public class Main {
 
     private Scene scene1;
     Text text2 = new Text();
@@ -33,16 +32,11 @@ public class Main extends Application {
     Text text1 = new Text("Match 1");
     PauseTransition delay = new PauseTransition(Duration.seconds(3));
 
-    public static void main(String[] args) {
 
-        launch(args);
-    }
+    public Scene get(Socket socket) throws IOException {
 
-    @Override
-    public void start(Stage primaryStage) throws IOException {
 
-        ServerSocket ss = new ServerSocket(3000);
-        Socket s = ss.accept();
+        Socket s = socket;
         DataInputStream dis = new DataInputStream(s.getInputStream());
         DataOutputStream dout = new DataOutputStream(s.getOutputStream());
 
@@ -79,7 +73,7 @@ public class Main extends Application {
             } catch (IOException e1) {
                 e1.printStackTrace();
             }
-            primaryStage.setScene(scene1);
+
         });
         vBox2.getChildren().addAll(text4, combo_box, button10);
 
@@ -112,12 +106,9 @@ public class Main extends Application {
         vbox.setSpacing(15);
 
         scene1 = new Scene(vbox, 300, 350);
-
-        primaryStage.setScene(scene2);
-        primaryStage.setTitle("TIC-TAC-TOE");
-        primaryStage.show();
-
         new ServerListener(dis, dout, button).start();
+
+        return scene1;
 
     }
 

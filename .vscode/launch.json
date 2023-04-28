@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "client",
+            "request": "launch",
+            "mainClass": "hellofx.client",
+            "projectName": "tic-tac-toe_510ea73c"
+        },
+        {
+            "type": "java",
             "name": "database",
             "request": "launch",
             "mainClass": "hellofx.database",
