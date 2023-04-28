@@ -29,7 +29,6 @@ public class client{
 
    public Scene get(Socket socket) throws IOException {
 
-
         Socket s = socket;
         DataInputStream dis=new DataInputStream(s.getInputStream());
         DataOutputStream dout=new DataOutputStream(s.getOutputStream());

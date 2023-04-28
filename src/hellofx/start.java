@@ -190,15 +190,15 @@ public class start extends Application{
 
         b5.setOnAction(e -> {
             primaryStage.setScene(scene5);
-                delay.play();
-                delay.setOnFinished(event -> { 
-                    try (Socket socket2 = ss.accept()) {
+
                         Main main = new Main();
-                        primaryStage.setScene(main.get(socket2));
-                    } catch (IOException e1) {
-                        e1.printStackTrace();
-                    } 
-                });
+                        try {
+                            primaryStage.setScene(main.get(ss));
+                        } catch (IOException e1) {
+                            e1.printStackTrace();
+                        }
+                   
+
            
         });
 
@@ -207,21 +207,16 @@ public class start extends Application{
             final int ii = i;
             butt[i].setOnAction(e-> {
                 primaryStage.setScene(scene4);
-                delay.play();
-                delay.setOnFinished(event -> { 
                     String queryString = "select port from tic_tac_toe where Username ='"+str[ii]+"'";
                     System.out.println(queryString);
                     try (ResultSet rst2 = stmt.executeQuery(queryString)) {
                         rst2.next();
-                        
                         Socket socket1 = new Socket("127.0.0.1",rst2.getInt(1));
                         client cli = new client();
                         primaryStage.setScene(cli.get(socket1)); 
                     } catch (SQLException | IOException e1) {
                         e1.printStackTrace();
                     }
-                });
-               
                 });
         }
 

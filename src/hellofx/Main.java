@@ -33,10 +33,10 @@ public class Main {
     PauseTransition delay = new PauseTransition(Duration.seconds(3));
 
 
-    public Scene get(Socket socket) throws IOException {
+    public Scene get(ServerSocket ss) throws IOException {
 
 
-        Socket s = socket;
+        Socket s = ss.accept();
         DataInputStream dis = new DataInputStream(s.getInputStream());
         DataOutputStream dout = new DataOutputStream(s.getOutputStream());
 
