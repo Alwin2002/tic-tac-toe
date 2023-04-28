@@ -3,19 +3,15 @@ package hellofx;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
-
 import java.net.Socket;
 import java.net.UnknownHostException;
-
 import javafx.animation.PauseTransition;
-
 import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-
 import javafx.util.Duration;
 import javafx.geometry.Pos;
 
@@ -111,14 +107,6 @@ public void extracted(int count,DataOutputStream dout, String c, Button[] button
         button[b[0]].setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-size: 22px;");
         button[b[1]].setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-size: 22px;");
         button[b[2]].setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-size: 22px;");
-                    delay.play();
-            delay.setOnFinished(event -> { 
-                enl(button);
-                match++;
-                text1.setText("Match " + match);
-                text3.setText("");
-                text2.setText("X's turn");
-            });
     }
 }
 

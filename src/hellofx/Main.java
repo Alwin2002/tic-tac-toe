@@ -195,15 +195,7 @@ public class Main {
                             button[b[0]].setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-size: 22px;");
                             button[b[1]].setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-size: 22px;");
                             button[b[2]].setStyle("-fx-background-color: blue; -fx-text-fill: white; -fx-font-size: 22px;");
-                                    delay.play();
-                                    delay.setOnFinished(event -> { 
-                                        enl(button);
-                                        match++;
-                                        text1.setText("Match " + match);
-                                        text3.setText("");
-                                        text2.setText("X's turn");
-                                    });
-                                }
+                        }
                         for (int i = 0; i < 9; i++) {
                             if (arr[i] == 0) {
                                 button[i].setDisable(false);
